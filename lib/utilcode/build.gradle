@@ -1,0 +1,24 @@
+apply {
+    plugin Config.depConfig.plugin_traute.pluginId
+    plugin Config.depConfig.plugin_maven.pluginId
+    plugin Config.depConfig.plugin_bintray.pluginId
+    plugin "readme-core"
+    from "${rootDir.path}/gradle/upload/bintrayUploadAndroid.gradle"
+}
+
+readme {
+    readmeFile file('./README.md')
+    readmeCnFile file('./README-CN.md')
+}
+
+dependencies {
+    implementation Config.depConfig.gson.dep
+
+    compileOnly Config.depConfig.support_appcompat_v7.dep
+    compileOnly Config.depConfig.support_design.dep
+
+    testImplementation Config.depConfig.test_junit.dep
+    testImplementation Config.depConfig.test_robolectric.dep
+    testImplementation Config.depConfig.support_appcompat_v7.dep
+    testImplementation Config.depConfig.eventbus_lib.dep
+}
